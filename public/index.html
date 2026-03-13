@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sveza — История цен клиентов</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="badge">Sveza</p>
+      <h1>История цен клиентов</h1>
+      <p class="subtitle">Удобный просмотр истории цен, фильтрация и добавление новых записей в единую базу.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="section-title">
+        <h2>Выбор клиента и фильтры</h2>
+        <p>Имена клиентов, сорта и размеры автоматически нормализуются.</p>
+      </div>
+
+      <div class="grid grid--filters">
+        <label>
+          <span>Клиент</span>
+          <input id="clientInput" list="clientsList" type="text" placeholder="Введите имя клиента" />
+          <datalist id="clientsList"></datalist>
+        </label>
+
+        <label>
+          <span>Сорт</span>
+          <input id="gradeFilter" type="text" placeholder="Например: B/BB" />
+        </label>
+
+        <label>
+          <span>Размер</span>
+          <input id="sizeFilter" type="text" placeholder="Например: 1525x1525" />
+        </label>
+
+        <label>
+          <span>Дата от</span>
+          <input id="dateFrom" type="date" />
+        </label>
+
+        <label>
+          <span>Дата до</span>
+          <input id="dateTo" type="date" />
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="applyFiltersBtn" class="btn btn--primary">Показать историю</button>
+        <button id="resetFiltersBtn" class="btn btn--ghost">Сбросить фильтры</button>
+      </div>
+
+      <div id="message" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-title section-title--row">
+        <div>
+          <h2>История цен</h2>
+          <p>Дата, размер, сорт, цена и дополнительные поля по каждому клиенту.</p>
+        </div>
+        <div class="summary" id="summaryBox">Записей: 0</div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Клиент</th>
+              <th>Дата</th>
+              <th>Размер</th>
+              <th>Сорт</th>
+              <th>Цена</th>
+              <th>Валюта</th>
+              <th>Менеджер</th>
+              <th>Комментарий</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <tr>
+              <td colspan="8" class="empty">Загрузка данных...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Добавление новой записи</h2>
+        <p>Все поля проверяются. Данные сохраняются и сразу появляются в истории.</p>
+      </div>
+
+      <form id="recordForm" class="grid grid--form">
+        <label>
+          <span>Клиент *</span>
+          <input name="client" type="text" placeholder="Например: Ivan Ply" required />
+        </label>
+
+        <label>
+          <span>Дата *</span>
+          <input name="date" type="date" required />
+        </label>
+
+        <label>
+          <span>Размер *</span>
+          <input name="size" type="text" placeholder="Например: 2500x1250" required />
+        </label>
+
+        <label>
+          <span>Сорт *</span>
+          <input name="grade" type="text" placeholder="Например: BB/CP" required />
+        </label>
+
+        <label>
+          <span>Цена *</span>
+          <input name="price" type="text" inputmode="decimal" placeholder="Например: 12500" required />
+        </label>
+
+        <label>
+          <span>Валюта</span>
+          <input name="currency" type="text" value="RUB" />
+        </label>
+
+        <label>
+          <span>Менеджер</span>
+          <input name="manager" type="text" placeholder="Имя менеджера" />
+        </label>
+
+        <label class="full-width">
+          <span>Комментарий</span>
+          <textarea name="comment" rows="3" placeholder="Дополнительная информация"></textarea>
+        </label>
+
+        <div class="actions full-width">
+          <button class="btn btn--primary" type="submit">Сохранить запись</button>
+          <button class="btn btn--ghost" type="reset">Очистить форму</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>

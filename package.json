@@ -1,0 +1,12 @@
+{
+  "name": "sveza-price-history",
+  "version": "1.0.0",
+  "description": "Сайт для просмотра истории цен клиентов Sveza",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
