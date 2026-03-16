@@ -140,7 +140,6 @@ function validateRecord(input) {
   const price = normalizePrice(input.price);
   const comment = cleanSpaces(input.comment || '');
   const currency = cleanSpaces(input.currency || 'RUB').toUpperCase();
-  const manager = cleanSpaces(input.manager || '');
 
   const errors = [];
   if (!client) errors.push('Укажите клиента.');
@@ -164,7 +163,6 @@ function validateRecord(input) {
       price,
       comment,
       currency,
-      manager,
       createdAt: new Date().toISOString()
     }
   };
