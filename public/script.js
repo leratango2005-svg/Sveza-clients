@@ -54,7 +54,7 @@ function renderTable(records) {
   summaryBox.textContent = `Записей: ${records.length}`;
 
   if (!records.length) {
-    historyTableBody.innerHTML = '<tr><td colspan="8" class="empty">По вашему запросу записи не найдены.</td></tr>';
+    historyTableBody.innerHTML = '<tr><td colspan="7" class="empty">По вашему запросу записи не найдены.</td></tr>';
     return;
   }
 
@@ -66,7 +66,6 @@ function renderTable(records) {
       <td>${escapeHtml(record.grade)}</td>
       <td>${escapeHtml(record.price)}</td>
       <td>${escapeHtml(record.currency || '')}</td>
-      <td>${escapeHtml(record.manager || '')}</td>
       <td>${escapeHtml(record.comment || '')}</td>
     </tr>
   `).join('');
@@ -75,13 +74,13 @@ function renderTable(records) {
 async function loadHistory() {
   try {
     setMessage('');
-    historyTableBody.innerHTML = '<tr><td colspan="8" class="empty">Загрузка данных...</td></tr>';
+    historyTableBody.innerHTML = '<tr><td colspan="7" class="empty">Загрузка данных...</td></tr>';
     const query = buildQuery();
     const response = await fetch(`/api/history${query ? `?${query}` : ''}`);
     const data = await response.json();
     renderTable(data.records || []);
   } catch (error) {
-    historyTableBody.innerHTML = '<tr><td colspan="8" class="empty">Ошибка загрузки.</td></tr>';
+    historyTableBody.innerHTML = '<tr><td colspan="7" class="empty">Ошибка загрузки.</td></tr>';
     setMessage('Не удалось загрузить историю цен.', 'error');
   }
 }
