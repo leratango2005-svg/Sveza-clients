@@ -139,7 +139,7 @@ function validateRecord(input) {
   const grade = normalizeGrade(input.grade);
   const price = normalizePrice(input.price);
   const comment = cleanSpaces(input.comment || '');
-  const currency = cleanSpaces(input.currency || 'RUB').toUpperCase();
+  const currency = cleanSpaces(input.currency || 'EUR').toUpperCase();
 
   const errors = [];
   if (!client) errors.push('Укажите клиента.');
